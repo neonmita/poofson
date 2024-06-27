@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="мебель, интерьер, керамика, design">
+    <meta name="description"
+        content="Наш интернет-магазин предлагает качественную и стильную мебель для дома. Консультируем, доставляем, собираем.">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="css/slyle.css" type="text/css"> -->
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .windowSorry {
+            width: 500px;
+            height: 500px;
+            background-color: #ffc107;
+            z-index: 99999;
+            margin-inline: 40vw;
+            margin-block-start: 50vh;
+            transform: translateY(-50%);
+            border-radius: 50px;
+            position: fixed;
+            display: block;
+        }
+
+        #close {
+            font-size: 3rem;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-left: 15px;
+
+        }
+
+        .windowSorry p {
+            margin-top: 20px;
+            font-size: 48px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .windowSorry span {
+            /* margin-top: 70px; */
+            font-size: 200px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* nav */
+
+        .nav1 {
+            align-self: center;
+
+        }
+
+        .logo {
+            margin-left: auto;
+            margin-right: auto;
+            align-self: center;
+
+        }
+
+        .input3 {
+            width: 200px;
+            height: 45px;
+            background-color: #F9F9F9;
+            color: #2A254B;
+            padding: 10px;
+            border: 0;
+        }
+
+        .button3 {
+            width: 70px;
+            height: 45px;
+            background-color: #2A254B;
+            border: 0;
+            color: #ffffff;
+        }
+
+
+        .dropdown-menu {
+            border: 0;
+        }
+
+        .btnSearch,
+        .btnUser,
+        .btnCart {
+            display: inline-block;
+            font-weight: 400;
+            color: #726E8D;
+            text-align: center;
+            align-self: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 1rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        #search {
+            display: none;
+        }
+
+        .navMain {
+            height: 62px;
+            box-sizing: border-box;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-inline: auto;
+        }
+
+        .nav-item {
+            line-height: 46px;
+            color: #726E8D;
+            padding: 0px 20px;
+            transition: all 100ms linear;
+            display: block;
+            margin-right: 0px;
+        }
+
+
+        .dropdown-toggle::after {
+            border: 0;
+        }
+
+        /* main */
+        /* Banner */
+        .banner {
+            max-width: 1280px;
+            color: #fff;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            background-color: #2A254B;
+
+        }
+
+        .banner-text {
+            max-width: 600px;
+            height: 450px;
+            margin: 50px 70px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .banner-text h2 {
+            font-size: 32px;
+            line-height: 140%;
+            margin-bottom: 50px;
+            max-width: 450px;
+        }
+
+        .banner-text button {
+            height: 50px;
+            width: 170px;
+            background-color: #F9F9F9;
+            border: 0;
+            border-radius: 1px;
+            color: #2A254B;
+        }
+
+        .banner-text p {
+            margin-top: auto;
+            font-size: 18px;
+            line-height: 150%;
+        }
+
+        .banner-pic img {
+            object-fit: cover;
+            height: auto;
+        }
+
+        /* differences */
+        .container-fluid.differ {
+            margin-top: 60px;
+            margin-bottom: 90px;
+            color: #2A254B;
+        }
+
+        .row {
+            max-width: 1280px;
+            margin: auto;
+        }
+
+        .row h1 {
+            margin-bottom: 30px;
+        }
+
+        .iconDif {
+            margin-top: 30px;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+        }
+
+        .col-md-3 h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            line-height: 140%;
+        }
+
+        .col-md-3 p {
+            font-size: 1rem;
+            line-height: 140%;
+            padding-right: 20px;
+        }
+
+        /* new prod */
+        .prodNew,
+        .prodPop {
+            color: #2A254B;
+        }
+
+        .prodPic {
+
+            margin-bottom: 20px;
+        }
+
+        .prodName {
+            margin-bottom: 20px;
+            font-size: 20px;
+            line-height: 140%;
+        }
+
+        .prodPrice {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 140%;
+        }
+
+        .btnProd {
+            height: 50px;
+            width: 170px;
+            background-color: #F9F9F9;
+            border: 0;
+            border-radius: 1px;
+            color: #2A254B;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        /* join */
+        .joinWrapper {
+            height: 480px;
+            padding: 55px;
+            background-color: #F9F9F9;
+        }
+
+        .join {
+            background-color: #fff;
+            max-width: 1280px;
+            height: 370px;
+        }
+
+        .join h1 {
+            margin: 50px;
+            margin-bottom: 30px;
+            font-size: 20px;
+            line-height: 140%;
+        }
+
+
+        .join p {
+            font-size: 0.8rem;
+            line-height: 140%;
+        }
+
+        /* .form-inline {
+            justify-content: center;
+            margin-top: 50px;
+        } */
+
+        .align-center {
+            justify-content: center;
+        }
+
+        .input2 {
+            width: 350px;
+            height: 45px;
+            background-color: #F9F9F9;
+            color: #2A254B;
+            padding: 10px;
+            border: 0;
+        }
+
+        .button2 {
+            width: 100px;
+            height: 45px;
+            background-color: #2A254B;
+            border: 0;
+            color: #ffffff;
+        }
+
+        .joinText {
+            max-width: 600px;
+
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        /* .joinText form {
+            justify-content: center;
+            margin-top: 50px;
+            transform: scale(1.3);
+
+        } */
+
+        /* .joinText form:nth-child {
+            border-radius: 0;
+        } */
+
+        .bannerBottom {
+            height: 603px;
+            color: #2A254B;
+            background-color: #ffffff;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bannerBottomText {
+            max-width: 500px;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bannerBottomText h2 {
+            font-size: 32px;
+            line-height: 140%;
+            margin-bottom: 50px;
+            max-width: 450px;
+        }
+
+        .bannerBottomText button {
+            height: 50px;
+            width: 170px;
+            background-color: #F9F9F9;
+            border: 0;
+            border-radius: 1px;
+            color: #2A254B;
+        }
+
+        .bannerBottomText p {
+            margin-top: auto;
+            font-size: 18px;
+            line-height: 150%;
+
+        }
+
+        .bannerBottomText img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* footer */
+        .footer {
+            height: 380px;
+            padding-bottom: 200px;
+            padding-top: 50px;
+            background-color: #2A254B;
+            color: #fff;
+            font-size: 0.8rem;
+        }
+
+        .footerNav li {
+            list-style-type: none;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .footerNav ul {
+            padding-left: 5px;
+        }
+
+        .footerNav a {
+            color: #fff;
+        }
+
+        .footerNav a:hover {
+            color: #ece4e4;
+        }
+
+        .footerNav h3,
+        .footerJoin h3 {
+            font-size: 1rem;
+            margin-bottom: 24px;
+        }
+
+        .footerSoc {
+            font-size: 1rem;
+            align-items: right;
+        }
+
+        .input {
+            width: 450px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.253);
+            color: #F9F9F9;
+            padding: 10px;
+            border: 0;
+        }
+
+        .button {
+            width: 100px;
+            height: 45px;
+            background-color: rgb(255, 255, 255);
+            border: 0;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+
+        }
+    </style>
+
+
+    <title>Home</title>
+</head>
+
+<body>
+
+    <!-- header start-->
+
+    <header class="header">
+        <div class="container-fluid nav1" style="height: 62px; max-width: 1440px;">
+            <div class="row ">
+                <div class="col-4 align-middle text-left">
+                    <button class="btnSearch"><span class="material-icons">search</span></button>
+                    <form class="form-inline mt-2" id="search">
+                        <button class="button3" id="error" type="submit">Найти</button>
+                        <input class="input3" type="search" placeholder="Поиск">
+                    </form>
+                </div>
+                <div class="col-4 align-middle text-center logo">Mr.Poof</div>
+                <div class="col-4 align-middle text-right">
+                    <button type="submit" class="btnCart" id="error"><span
+                            class="material-icons">shopping_cart</span></button>
+                    <button type="submit" class="btnUser" id="error"><span
+                            class="material-icons">account_circle</span></button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="dropdown-divider my-0">
+
+        <!-- nav  -->
+        <div class="container navMain">
+            <nav class="navbar navbar-expand-lg navbar-light pb-0 pt-0 ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse nav1" id="navbarScroll">
+                    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll"
+                        style="max-height: 450px; justify-content: space-around;">
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">Горшки</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item nav-item" href="#">Керамические</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Глиняные</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">Керамика</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item nav-item" href="#">Скульптуры</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Плошки</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">Столы</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item nav-item" href="#">aaaaaa</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">бббббб</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">ыыыыыы</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">Стулья</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item nav-item" href="#">пппппп</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">уууууу</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">кккккк</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">Посуда</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item nav-item" href="#">Будущего</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Прошлого</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">Столовые приборы</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-toggle="dropdown" aria-expanded="false">Сервировка</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                                <li><a class="dropdown-item nav-item" href="#">Разное</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- header end -->
+
+    <!-- window -->
+
+    <!--  -->
+
+
+    <div class="windowSorry" id="sorry">
+        <span class="material-icons" id="close">cancel</span>
+        <p><span class="material-icons Sad-icon">sentiment_very_dissatisfied</span></p>
+        <p>Нам очень жаль!</p>
+    </div>
+
+
+
+    <!-- main -->
+    <div class="container-fluid banner px-0">
+        <div class="row mx-0 my-0">
+            <div class="col-md-7  banner-text">
+                <h2>
+                    Мебельный бренд будущего с дизайном вне времени
+                </h2>
+                <button type="submit" id="error">Посмотреть</button>
+                <p>
+                    Мебельный бренд Мистер Пуф предлагает качественную и стильную мягкую мебель: диваны, кресла и пуфы.
+                    Изделия изготовлены из
+                    экологичных и натуральных материалов, долговечны и безопасны для здоровья. В ассортименте
+                    представлены разные стили и
+                    цветовые решения.
+                </p>
+            </div>
+            <div class="col-md-5  banner-pic px-0">
+                <img src="img/RightImage.png" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid differ">
+        <div class="row">
+            <div class="col-md-12  text-center">
+                <h1>Что отличает наш бренд от других</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <span class="material-icons iconDif">local_shipping</span>
+                <h2>Доставка уже завтра</h2>
+                <p class="mb-0">Закажите товар до 15.00 и получите на следующий день</p>
+            </div>
+            <div class="col-md-3 ">
+                <span class="material-icons iconDif">volunteer_activism</span>
+                <h2>Настоящие мастера</h2>
+                <p class="mb-0">Изделия ручной работы, изготовленный с настоящей страстью и усердием</p>
+            </div>
+            <div class="col-md-3">
+                <span class="material-icons iconDif">credit_card</span>
+                <h2>Отличные цены</h2>
+                <p class="mb-0">Благодаря работе с нашими материалами и качеству вы нигде не найдете лучших цен</p>
+            </div>
+            <div class="col-md-3">
+                <span class="material-icons iconDif">recycling</span>
+                <h2>Пеработанная упаковка</h2>
+                <p class="mb-0">Мы используем 100% переработанную упаковку, чтобы уменьшить влияние на экологию</p>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="container-fluid prodNew"> -->
+    <div class="row prodNew">
+        <div class="col-md-12  text-left">
+            <h1>Наши новинки</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-3 mb-3">
+            <img class="prodPic" src="img/chair.png" alt="">
+            <h4 class="prodName">Стул для модника</h2>
+                <p class="mb-0 prodPrice">500 &#8381;</p>
+        </div>
+        <div class="col-md-3 ">
+            <img class="prodPic" src="img/Vase_set.png" alt="">
+            <h4 class="prodName">Набор ваз</h2>
+                <p class="mb-0 prodPrice">500 &#8381;</p>
+        </div>
+        <div class="col-md-3 ">
+            <img class="prodPic" src="img/Silk_vase.png" alt="">
+            <h4 class="prodName">Гладкая ваза</h2>
+                <p class="mb-0 prodPrice">500 &#8381;</p>
+        </div>
+        <div class="col-md-3 ">
+            <img class="prodPic" src="img/lamp.png" alt="">
+            <h4 class="prodName">Лампа, как лампа</h2>
+                <p class="mb-0 prodPrice">500 &#8381;</p>
+        </div>
+        <button type="submit" class="btnProd" id="error">Посмотреть</button>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div class="wrapper"> -->
+    <div class="row prodPop">
+        <div class="col-md-12  text-left">
+            <h1>Популярные товары</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6 mb-3">
+            <img class="prodPic" src="img/sofa.png" alt="">
+            <h4 class="prodName">Софа зеленая</h2>
+                <p class="mb-0 prodPrice">500 &#8381;</p>
+        </div>
+        <div class="col-md-3 ">
+            <img class="prodPic" src="img/Vase_set.png" alt="">
+            <h4 class="prodName">Набор ваз</h2>
+                <p class="mb-0 prodPrice">500 &#8381;</p>
+        </div>
+        <div class="col-md-3 ">
+            <img class="prodPic" src="img/chair_wb.png" alt="">
+            <h4 class="prodName">Стул </h2>
+                <p class="mb-0 prodPrice">500 &#8381;</p>
+        </div>
+        <button class="btnProd" id="error">Посмотреть</button>
+    </div>
+    <!-- </div> -->
+
+    <!-- join -->
+
+    <div class="container-fluid joinWrapper">
+        <div class="row ">
+            <div class="col-md-12  text-center join">
+                <div class="joinText">
+                    <h1>Присоединяйтесь к клубу и получайте преимущества</h1>
+                    <p>Подпишитесь на нашу рассылку и получайте эксклюзивные предложения о новых ассортиментах,
+                        распродажах, всплывающих
+                        магазинах и многом другом</p>
+
+                    <form class="form-inline mt-5 align-center">
+                        <input type="email" class="input2" placeholder="e-mail" required autocomplete="email"
+                            minlength="" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'" name="email">
+                        <button type="submit" class="button2" id="error">Отправить</button>
+                    </form>
+                    <!-- <form class="form-inline">
+                        <input type="email" class="form-control" placeholder="e-mail" required autocomplete="email"
+                            minlength="" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'" name="email">
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row bannerBottom">
+            <div class="col-md-6 text-left bannerBottomText">
+                <h2>
+                    The furniture brand for the future, with timeless designs
+                </h2>
+                <button type="button" id="error">Посмотреть</button>
+                <p>
+                    A new era in eco friendly furniture with Avelon, the French luxury retail
+                    brand with nice fonts, tasteful colors and a
+                    beautiful way to display things digitally using modern web technologies.
+                </p>
+            </div>
+            <div class="col-md-6 text-left">
+                <img src="img/bottom.png" alt="" class="img-fluid">
+            </div>
+        </div>
+        <!-- main end -->
+
+        <!-- footer -->
+
+        <footer class="footer">
+            <div class="row">
+                <div class="col-6 footerNav">
+                    <div class="row mx-0 text-left">
+                        <div class="col-4 footerMenu ">
+                            <ul>
+                                <li>
+                                    <h3><a href="#">Меню</a></h3>
+                                </li>
+                                <li><a href="#">Новые поступления</a></li>
+                                <li><a href="#">Бестселлеры</a></li>
+                                <li><a href="#">Недавно просмотренное</a></li>
+                                <li><a href="#">Популярное</a></li>
+                                <li><a href="#">Все продукты</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-4 footerCateg ">
+                            <ul>
+                                <li>
+                                    <h3><a href="#">Категории</a></h3>
+                                </li>
+                                <li><a href="#">Посуда</a></li>
+                                <li><a href="#">Мебель</a></li>
+                                <li><a href="#">Товары для дома</a></li>
+                                <li><a href="#">Горшки</a></li>
+                                <li><a href="#">Стулья</a></li>
+                                <li><a href="#">Освещение</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-4 footerCompany ">
+                            <ul>
+                                <li>
+                                    <h3><a href="#">Наш магазин</a></h3>
+                                </li>
+                                <li><a href="#">О нас</a></li>
+                                <li><a href="#">Вакансии</a></li>
+                                <li><a href="#">Контакты</a></li>
+                                <li><a href="#">Конфиденциальность</a></li>
+                                <li><a href="#">Отменить подписку</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="dropdown-divider my-0">
+                <div class="col-6 footerJoin">
+                    <h3>Присоединяйтесь к клубу и получайте преимущества</h3>
+                    <form class="form-inline">
+                        <input type="email" class="input" placeholder="e-mail" required autocomplete="email"
+                            minlength="" onfocus="this.placeholder=''" onblur="this.placeholder='e-mail'" name="email">
+                        <button type="submit" class="button" id="error">Отправить</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 footerCopyright">
+                    <p>Copyright 2025</p>
+                </div>
+                <div class="col-md-6 footerSoc align-rigth">
+                    <span class="material-icons">group</span>
+                    <span class="material-icons">install_mobile</span>
+                    <span class="material-icons">favorite</span>
+                    <span class="material-icons">savings</span>
+                    <span class="material-icons">thumb_up_off_alt</span>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+            integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+            crossorigin="anonymous"></script>
+
+        <script src="js/jquery-3.7.1.js"></script>
+        <script src="js/show.js"></script>
+
+        <script>
+            let closeWind = document.getElementById("close");
+            let openWind = document.getElementById("error");
+            let wind = document.getElementById("sorry");
+
+            openWind.addEventListener("click", function () {
+                wind.style.display = "block";
+            });
+
+            closeWind.addEventListener("click", function () {
+                wind.style.display = "none";
+            });
+
+
+
+        </script>
+</body>
+
+</html>
